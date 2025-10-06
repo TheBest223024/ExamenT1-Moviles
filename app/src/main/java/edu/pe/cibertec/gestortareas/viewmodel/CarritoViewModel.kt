@@ -6,17 +6,13 @@ import androidx.lifecycle.ViewModel
 import edu.pe.cibertec.gestortareas.model.*
 
 class CarritoViewModel : ViewModel() {
-
-    // Campos
     var titulo by mutableStateOf("")
     var precio by mutableStateOf("")
     var cantidad by mutableStateOf("")
     var categoriaSeleccionada by mutableStateOf<CategoriaLibro?>(null)
 
-    // Carrito
     var carrito = mutableStateListOf<Libro>()
 
-    // Alertas
     var mensajeAlerta by mutableStateOf<String?>(null)
     var libroEliminar by mutableStateOf<Libro?>(null)
     var confirmarLimpiar by mutableStateOf(false)

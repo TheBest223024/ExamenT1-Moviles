@@ -6,5 +6,4 @@ enum class CategoriaLibro(val label: String) {
     INFANTIL("Infantil"),
     EDUCATIVO("Educativo"),
     OTROS("Otros");
-
 }

@@ -27,13 +27,11 @@ fun CarritoScreen(
 ) {
     val scope = rememberCoroutineScope()
     val snackbarHostState = remember { SnackbarHostState() }
-
     val formato = NumberFormat.getCurrencyInstance(Locale.forLanguageTag("es-PE"))
 
     Scaffold(
         snackbarHost = { SnackbarHost(snackbarHostState) }
     ) { padding ->
-
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
@@ -41,15 +39,12 @@ fun CarritoScreen(
                 .padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            // 🧩 ENCABEZADO
             item {
                 Text(
                     "LibroMundo - Carrito de Compras",
                     style = MaterialTheme.typography.titleMedium
                 )
             }
-
-            // 🧩 CAMPOS DE ENTRADA
             item {
                 OutlinedTextField(
                     value = vm.titulo,
@@ -59,8 +54,6 @@ fun CarritoScreen(
                     modifier = Modifier.fillMaxWidth()
                 )
             }
-
-            // 🧩 PRECIO Y CANTIDAD
             item {
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     OutlinedTextField(
@@ -81,8 +74,6 @@ fun CarritoScreen(
                     )
                 }
             }
-
-            // 🧩 CATEGORÍAS
             item {
                 Text("Categoría", style = MaterialTheme.typography.bodyMedium)
 
@@ -101,8 +92,6 @@ fun CarritoScreen(
                     }
                 }
             }
-
-            // 🧩 BOTONES DE ACCIÓN
             item {
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     Button(onClick = {
@@ -115,14 +104,11 @@ fun CarritoScreen(
                     }) {
                         Text("Agregar Libro")
                     }
-
                     OutlinedButton(onClick = { vm.confirmarLimpiar = true }) {
                         Text("Limpiar Carrito")
                     }
                 }
             }
-
-            // 🧩 SECCIÓN DE LIBROS
             item {
                 Divider()
                 Text("Libros en el carrito:", style = MaterialTheme.typography.titleSmall)
@@ -147,8 +133,6 @@ fun CarritoScreen(
                     }
                 }
             }
-
-            // 🧩 RESUMEN DE COMPRA
             item {
                 val compra = vm.obtenerCompra()
                 Column {
@@ -164,8 +148,6 @@ fun CarritoScreen(
                     )
                 }
             }
-
-            // 🧩 BOTÓN FINAL
             item {
                 Button(
                     onClick = {
@@ -184,8 +166,6 @@ fun CarritoScreen(
                 }
             }
         }
-
-        // 🧩 ALERTAS
         vm.mensajeAlerta?.let {
             AlertDialog(
                 onDismissRequest = { vm.mensajeAlerta = null },
@@ -196,7 +176,6 @@ fun CarritoScreen(
                 text = { Text(it) }
             )
         }
-
         vm.libroEliminar?.let { libro ->
             AlertDialog(
                 onDismissRequest = { vm.libroEliminar = null },
@@ -213,7 +192,6 @@ fun CarritoScreen(
                 text = { Text("¿Eliminar '${libro.titulo}' del carrito?") }
             )
         }
-
         if (vm.confirmarLimpiar) {
             AlertDialog(
                 onDismissRequest = { vm.confirmarLimpiar = false },

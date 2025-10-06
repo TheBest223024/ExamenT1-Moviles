@@ -12,19 +12,14 @@ import edu.pe.cibertec.gestortareas.viewmodel.CarritoViewModel
 
 @Composable
 fun LibroMundoApp() {
-    // Controlador de navegación
     val navController = rememberNavController()
-    // ViewModel compartido entre pantallas
     val carritoViewModel: CarritoViewModel = viewModel()
-
     Scaffold { paddingValues ->
-        // Sistema de navegación principal
         NavHost(
             navController = navController,
             startDestination = "carrito",
-            modifier = Modifier.padding(paddingValues) // ✅ elimina warning de padding
+            modifier = Modifier.padding(paddingValues)
         ) {
-            // 📘 Pantalla principal del carrito
             composable(route = "carrito") {
                 CarritoScreen(
                     vm = carritoViewModel,
@@ -33,8 +28,6 @@ fun LibroMundoApp() {
                     }
                 )
             }
-
-            // 📗 Pantalla del resumen de compra
             composable(route = "resumen") {
                 ResumenScreen(
                     vm = carritoViewModel,

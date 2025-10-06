@@ -7,7 +7,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import edu.pe.cibertec.gestortareas.viewmodel.CarritoViewModel
 
-@OptIn(ExperimentalMaterial3Api::class) // ✅ Necesario para TopAppBar
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ResumenScreen(
     vm: CarritoViewModel,
